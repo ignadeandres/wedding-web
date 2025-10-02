@@ -1,0 +1,127 @@
+/* ==========================================================================
+   Location Section Styles
+   ========================================================================== */
+
+#location {
+    background: #fff;
+    margin-top: 60px;
+    clear: both;
+    position: relative;
+    z-index: 1;
+}
+
+.location-item {
+    margin-bottom: 30px;
+}
+
+.location-card {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 30px 25px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e9ecef;
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.location-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+.location-card h4 {
+    color: #e8ca6f;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.location-card h5 {
+    color: #3d4351;
+    font-size: 20px;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.location-card p {
+    color: #6c757d;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    flex-grow: 1;
+}
+
+.location-card .btn {
+    margin-top: auto;
+    align-self: center;
+}
+
+/* Fix spacing with events section */
+.events {
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    #location {
+        margin-top: 40px;
+    }
+
+    .events {
+        margin-bottom: 30px;
+    }
+
+    .location-item {
+        margin-bottom: 25px;
+    }
+
+    .location-card {
+        padding: 25px 20px;
+        margin-bottom: 20px;
+    }
+
+    .location-card h5 {
+        font-size: 18px;
+    }
+
+    .location-card p {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    #location {
+        margin-top: 20px;
+    }
+
+    .location-card {
+        padding: 20px 15px;
+    }
+
+    .location-card h4 {
+        font-size: 12px;
+    }
+
+    .location-card h5 {
+        font-size: 16px;
+    }
+
+    .location-card p {
+        font-size: 13px;
+        margin-bottom: 15px;
+    }
+
+    .location-card .btn {
+        font-size: 11px;
+        padding: 6px 20px;
+    }
+}

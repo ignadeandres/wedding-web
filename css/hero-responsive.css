@@ -1,0 +1,61 @@
+/* ==========================================================================
+   Hero Image Responsive Styles
+   ========================================================================== */
+
+/* Desktop - 80% width with max-width constraint */
+.hero .hero-content img {
+    width: 80% !important;
+    max-width: 600px !important;
+    margin-bottom: 12%;
+}
+
+/* Tablet styles */
+@media (max-width: 768px) {
+    .hero {
+        min-height: 600px;
+    }
+
+    .hero .hero-content {
+        padding-top: 30%;
+    }
+
+    .hero .hero-content img {
+        width: 90% !important;
+        max-width: 400px !important;
+        margin-bottom: 8%;
+    }
+}
+
+/* Mobile styles */
+@media (max-width: 480px) {
+    .hero {
+        min-height: 500px;
+    }
+
+    .hero .hero-content {
+        padding-top: 25%;
+    }
+
+    .hero .hero-content img {
+        width: 95% !important;
+        max-width: 300px !important;
+        margin-bottom: 6%;
+    }
+}
+
+/* Small mobile styles */
+@media (max-width: 320px) {
+    .hero {
+        min-height: 450px;
+    }
+
+    .hero .hero-content {
+        padding-top: 20%;
+    }
+
+    .hero .hero-content img {
+        width: 100% !important;
+        max-width: 280px !important;
+        margin-bottom: 5%;
+    }
+}

@@ -46,6 +46,9 @@
     <link rel="stylesheet" href="css/flexslider.css">
     <link rel="stylesheet" href="css/styles.min.css">
     <link rel="stylesheet" href="css/queries.css">
+    <link rel="stylesheet" href="css/countdown.css">
+    <link rel="stylesheet" href="css/hero-responsive.css">
+    <link rel="stylesheet" href="css/location.css">
     <link rel="stylesheet" href="node_modules/animate.css/animate.min.css" onerror="loadCssFromCDN('animate.css')">
     <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css"
         onerror="loadCssFromCDN('font-awesome.css')">
@@ -62,7 +65,33 @@
             <div class="row">
                 <div class="col-md-12 text-center">
                     <h3>¡Nos casamos!</h3>
-                    <p>La fecha es el 6 de diciembre de 2025.</p>
+                    <p>6 de diciembre de 2025.</p>
+
+                    <!-- Countdown Timer -->
+                    <div class="countdown-container">
+                        <div id="countdown" class="countdown-timer">
+                            <div class="countdown-item">
+                                <span id="days" class="countdown-number">00</span>
+                                <span class="countdown-label">Días</span>
+                            </div>
+                            <div class="countdown-item">
+                                <span id="hours" class="countdown-number">00</span>
+                                <span class="countdown-label">Horas</span>
+                            </div>
+                            <div class="countdown-item">
+                                <span id="minutes" class="countdown-number">00</span>
+                                <span class="countdown-label">Minutos</span>
+                            </div>
+                            <div class="countdown-item">
+                                <span id="seconds" class="countdown-number">00</span>
+                                <span class="countdown-label">Segundos</span>
+                            </div>
+                        </div>
+                        <div id="countdown-finished" class="countdown-finished" style="display: none;">
+                            <h2>¡Ya es el gran día! 💒</h2>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -72,7 +101,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h3 class="header">Events</h3>
+                    <h3 class="header">Eventos</h3>
                 </div>
             </div>
             <div class="row">
@@ -121,32 +150,36 @@
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
-
     </section>
 
-    <section id="map" class="section-padding">
-        <div class="text-center">
-            <h3>Ubicación</h3>
-        </div>
-        <div id="map-content-wrapper" class="container pointer-events-none">
+    <section id="location" class="section-padding">
+        <div class="container">
             <div class="row">
-                <div class="col-xs-offset-1 col-xs-10 col-md-offset-3 col-md-6">
-                    <div class="text-center">
-                        <div id="btn-show-content" class="toggle-map-content pointer-events-auto">
-                            <i class="fa fa-info-circle"></i>&nbsp;&nbsp; Mostrar info
-                        </div>
+                <div class="col-md-12 text-center">
+                    <h3 class="header">Ubicación</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-12 location-item">
+                    <div class="location-card">
+                        <h4>Ceremonia</h4>
+                        <h5>Monasterio de Sant Cugat</h5>
+                        <p>Plaça d'Octavià, 1<br>08172 Sant Cugat del Vallès<br>Barcelona</p>
+                        <a href="https://maps.google.com/?q=Monasterio+de+Sant+Cugat,+Plaça+d'Octavià,+1,+08172+Sant+Cugat+del+Vallès,+Barcelona"
+                            target="_blank" class="btn btn-accent btn-small">
+                            <i class="fa fa-map-marker"></i>&nbsp;&nbsp;Ver en Google Maps
+                        </a>
                     </div>
-                    <div id="map-content" class="pointer-events-auto">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h5>Monasterio de Sant Cugat</h5>
-                                <p>Plaça d'Octavià, 1, 08172 Sant Cugat del Vallès, Barcelona.</p>
-                            </div>
-                            <div class="col-md-6">
-                                <h5>Masia Ca N'Illa</h5>
-                                <p>Carrer del Mil·lenari de Catalunya, 29, 08530 La Garriga, Barcelona</p>
-                            </div>
-                        </div>
+                </div>
+                <div class="col-md-6 col-sm-12 location-item">
+                    <div class="location-card">
+                        <h4>Convite</h4>
+                        <h5>Masia Ca N'Illa</h5>
+                        <p>Carrer del Mil·lenari de Catalunya, 29<br>08530 La Garriga<br>Barcelona</p>
+                        <a href="https://maps.google.com/?q=Masia+Ca+N'Illa,+Carrer+del+Mil·lenari+de+Catalunya,+29,+08530+La+Garriga,+Barcelona"
+                            target="_blank" class="btn btn-accent btn-small">
+                            <i class="fa fa-map-marker"></i>&nbsp;&nbsp;Ver en Google Maps
+                        </a>
                     </div>
                 </div>
             </div>
@@ -171,6 +204,40 @@
     <script src="js/jquery.mb.YTPlayer.min.js"></script>
     <script src="js/vendor/ouical.js"></script>
     <script src="js/scripts.min.js"></script>
+
+    <!-- Countdown Timer Script -->
+    <script>
+        function updateCountdown() {
+            // Fecha objetivo: 6 de diciembre de 2025 a las 12:00 AM
+            const targetDate = new Date('2025-12-06T00:00:00').getTime();
+            const now = new Date().getTime();
+            const timeLeft = targetDate - now;
+
+            if (timeLeft > 0) {
+                // Calcular días, horas, minutos y segundos
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                // Actualizar el DOM
+                document.getElementById('days').textContent = days.toString().padStart(2, '0');
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            } else {
+                // La fecha ha llegado
+                document.getElementById('countdown').style.display = 'none';
+                document.getElementById('countdown-finished').style.display = 'block';
+            }
+        }
+
+        // Inicializar la cuenta regresiva
+        updateCountdown();
+
+        // Actualizar cada segundo
+        setInterval(updateCountdown, 1000);
+    </script>
 </body>
 
 </html>
